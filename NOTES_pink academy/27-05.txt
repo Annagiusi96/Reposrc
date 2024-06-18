@@ -1,0 +1,561 @@
+foreach(var item in array)
+{
+	//
+}
+
+noi scriviamo le variabili inserendo prima il tipo e poi il nome
+
+se non sappiamo esattamente che tipo di dato contiene una variabile, possiamo usare VAR
+
+var variabile = "ciao";
+Console.WriteLine(variabile.GetType()); //tipo stringa
+
+____________________________________________________________
+
+OGGETTO che cos'è?
+
+qualsiasi cosa che ci circonda è un oggetto, noi possiamo raggrupparli con una determinata logica, ovvero qualche criterio
+- hanno uno scopo in comune
+
+possiamo raggruppare i vari oggetti secondo dei criteri specifici (ad esempio raggruppare gli oggetti per utilizzo)
+
+se lavoriamo ad oggetti dobbiamo sempre pensare:
+- a cosa serve quell'oggetto
+- come fare a raggiungere questo utilizzo
+
+OOP**
+
+object oriented programming
+
+quando parliamo di object oriented lo scopo dell'oggetto è quello che fa, non come è fatto. Questa filosofia si basa su qst famiglie:
+- principi oop
+- principi solid
+- tool e framework
+
+CLASSE**
+
+RAGGRUPPARE vuol dire CLASSIFICARE (To classify)
+
+una CLASS è una descrizione di un raggruppamento
+tramite l'oggetto class riesco a raggruppare i miei elementi secondo logiche specifiche
+
+(es class: writing tools, oggetti: penne, matite ecc)
+
+quando scriviamo una classe dobbiamo pensare al suo UTILIZZO, non a come è fatta
+
+una volta creata una classe, possiamo passare da un modello a un oggetto grazie alla parola chiave NEW
+
+OGGETTO** è dunque detto ISTANZA DELLA CLASSE (che dobbiamo usato per fare qualcosa)
+CLASSE**: progetto/modello sul quale vengono costruite tutte le istanze e rappresenta un tipo
+
+--per scrivere software bisogna identificare gli oggetti ben precisi che ci servono, se non li trovo passo a cercare nelle classi.
+
+--le classi devono essere definite magre possibili, con poche informazioni, generiche, le funzioni necessarie.
+--se faccio una classe Biro, il colore non è necessario, è indifferente, quindi non ci vado a inserire l'attributo colore.
+
+--se lo scopo dell'oggetto è generico alora si mettono attributi e funzioni generiche
+
+PENSARE A UNA CLASSE:
+pensarla per utilizzo
+pensarla con pochi particolari
+pensarla sostituibile (meno pezzi ha dentro piu è sostituibile. 
+è possibile ricavarne/applicare delle specfiche)
+
+Nel momento in cui facciamo una classe vuol dire che creiamo un progetto, un archetipo per tutti gli oggetti che ne ricavo
+
+All'interno di una classe troviamo dei componenti:
+
+-- metodi (es. M1, M2)
+-- field (variabili direttamente dentro la classe) (es. F1, F2)
+-- proprietà (es. P1,P2)
+
+quando noi facciamo la new(), creiamo un oggetto e tramite il . andiamo ad accedere ai vari metodi di quella classe.
+
+
+oggetto.proprietà = 100 (imposto il field F2)
+Console.WriteLine(oggetto.P1); (stampo la proprietà P1)
+
+tramite il punto de referenzio il componente interno 
+_________________________________________________________________________________
+
+MAIN:
+
+entry point, il punto nel quale parte l'elaborazione del programma
+questo punto è stabilito dal nome MAIN che viene dato a una funzione
+
+______________________________________________________________________________
+
+STRUTTURA API C# (application programming interface)
+
+NAMESPACE (es. S07-OOP-primo) ==> (all'interno) troviamo tutte le CLASSI (es. Biro, Matita ecc)
+
+NAMESPACE (es. System) ==> (es. String, Int64, Console ecc)
+
+Il nome di una classe è sempre = Namespace_name.Class_name oppure se è a piu livelli:
+Namespace_name.Sub_Namespace_name.Class_name 
+
+_________________________________________________________________________________
+
+NAMING CONVENTIONS:
+C# è un linguaggio case sensitive, distingue il carattere maiusc e min:
+
+Classi, Namespace, Metodi PUBLIC, Field PUBLIC e Property PUBLIC si scrivono in PascalCase standard (tutto cio che è public) prima lett maiusc
+
+Field PRIVATE devono iniziate con _ (underscore) e prima lettera minuscola
+
+Tutto il resto, variabili ecc seguono il (camelCase) prima min poi maiusc (ad es. le variabili definite in un metodo le scriviamo in minuscolo)
+
+sql (snake_case) è un linguaggio case insensitive, non distingue maiusc e min
+
+________________________________________________________________________________
+
+Da una classe (modello, progetto, skeleton) ottengo piu istanze
+
+es: Class (tipo) nome_var = new Class()
+
+________________________________________________________________________________
+
+Uguaglianza tra oggetti:
+
+due oggetti ricavati da una stessa classe non sono uguali (q1 == q2) false
+
+  //uguaglianza tra oggetti
+  Biro bb1 = new();
+  Biro bb2 = new();
+  Console.WriteLine((bb1 == bb2) + "bb1 == bb2"); //false, sono due biro diverse
+
+  //prendo istanza che c'era in bb1 e la metto in bb3, non creo un'altra istanza con bb3
+  Biro bb3 = bb1;
+  Console.WriteLine((bb1 = bb3) + "bb1 = bb3");// true, trattengo la medesima bira con due reference
+
+2 TIPI DI VARIABILI:
+
+ci sono due modi per creare oggetti
+
+STRUCT (class molto semplificate) Variabili semplici. Se definiamo un tipo con la struct, avremo un SIMPLE TYPE (int, long..)
+CLASS Variabili oggetto ==> reference types (string, quadrato ecc)
+
+MEMORIA MACCHINA, DUE SEZIONI:
+la prima => stack (sotto diretto controllo della cpu virtuale, ha la velocità di manipolaz superiore) e le struct memorizzano il proprio valore sulla stack. I simple type vedono il loro valore direttam agganciato alla variabile (ad es. variabile primitiva in java, cella di memoria contiene un intero)
+La variabile contiene direttamente il valore.
+L'uguale guarda al valore.
+
+La seconda => heap
+Le variabili di tipo REFERENCE (string, Biro ecc) sono definite tramite la Class.
+La variabile contiene l'indirizzo o il nome di una cella dello stack, che contiene il puntatore verso i dati dell'oggetto)
+Se ho reference diverse mi darà sempre false, anche se i due oggetti provengno dalla stessa classe
+L'uguale guarda al reference.
+
+Quadrato q1 = new Quadrato()
+Quadrato q2 = new Quadrato()
+
+q1 == q2 mi da false
+ho due oggetti differenti 
+se faccio 
+
+Qudrato q3 = q1
+contengono lo stesso reference, quindi puntano allo stesso oggetto, per questo mi dà TRUE
+
+***    //mai testare uguagliaza tra oggetti con ==
+***    //== ritorna true solo se si sta usando il medesimo oggetto
+
+__________________________________________________________________________
+
+//ESERCIZIO
+data la dimensione del lato = 4.0 (double)
+creare la classe Quadrato che abbia i metodi seguenti:
+
+Perimetro()
+Area()
+
+__________________________________________________________________________
+
+INCAPSULAMENTO (prima proprietà fondamentale della OOP)
+
+Qualsiasi sistema object oriented usa/realizza l'incapsulamento.
+La classe è come un contenitore di dati e metodi che lavorando sui dati
+
+In c# l'incapsulamento è la classe che realizza la capsula tramite il concetto di contenitore di dati e metodi.
+
+***L'incapsulamento è la capacità del linguaggio c# di realizzare un contenitore che contenga dati e metodi che lavorano sui dati. In c# qst contenitore è la classe***
+
+Perchè è una proprietà fondamentale? 
+Nello sviluppo NON OOP succedeva => spaghetti software (la parte iniziale del programma erano i dati e la parte finale era il codice. Quindi si passava coninuamente da una parte all'altra. C'era confusione)
+
+Nello sviluppo OOP invece abbiamo diversi oggetti che contengono tutto, ovvero i vari dati.
+
+l'information hiding è la base per rendere lo sviluppo piu agevole e riutilizzabile. L'IH nasconde le informazioni all'esterno
+
+L'incapsulamento è uno strumento per realizzare l'information hiding. Lo faccio tramite i modificatori di visibilità:
+--public
+--private
+
+***** Quando uso private o public? ******
+Regola empirica (vale quasi dappertutto) =>
+-- i Field sempre private
+-- i Metodi che forniscono risultati sempre public
+-- ((eventuali Metodi che non sono accessibili o non utili per l'esterno li definiamo private))
+
+______________________________________________________________________
+
+//ESERCIZIO
+data la dimensione della base = 12.33 (double) e dell'altezza = 34.789, 
+creare la classe Rettangolo che abbia i metodi seguenti:
+
+Perimetro()
+Area()
+
+______________________________________________________________________
+
+FIELD
+
+--ogni istanza possiede la propria copia di Field ==> i field vengono definiti VARIABLI DI ISTANZA (xke ogni istanza ha le proprie)
+
+______________________________________________________________________
+
+METHOD
+Devono fornire lavoro. Deve essere fatto uscire col return
+
+Se il metodo non ritorna nulla viene detto VOID 
+
+--public double Area(){
+	double area = base * altezza;
+	return area;
+}
+___________________________________________________________________-
+
+PROPERTY 
+è un campo posso metterla get se voglio leggerla, posso mettere set se voglio impostarla. Sono una via di mezzo tra metodi e variabili
+
+se voglio sapere il valore di una variabile di istanza da fuori, posso usare la property GET per leggerla solamente dall esterno, senza modificarla, ovviamente se rendo la varibile private
+
+((le property sarebbero le variabili attributo))
+
+________________________________________________________________________
+
+Le VARIABILE DI ISTANZA
+
+Possono essere divise in due tipi:
+-- variabili attributo (proprietà) (possono anche non importare piu di tanto,tipo il colore di una biro): variabili accessorie che aggiungono particolari ma non inficiano la vita dell'oggetto. Lettura dall esterno consentita, talvolta anche la modifica. Utilizzare sempre il meccanismo property di c# per filtrare eventuali modifiche con range di valori non consentiti
+
+Non rendiamo le varbili public anche se attributo perche possiamo usre le property  per avere piu controllo sul valore. Posso usare get per far leggere il valore dall esterno e set per farlo modificare, ma posso impostare delle condizioni per avere controllo sul valore del value
+
+-- variabili di stato (se toccate modificano la vita dell'oggetto. Non vanno mai toccate dall'esterno) Da queste varibili dipende lo svolgimento del lavoro dell'oggetto. Il lavoro fornito dall'oggetto è indipendente dagli attributi.
+
+Se tolgo una variab di stato, questo invalida l'oggetto. Mentre la variabile attributo no.
+
+private double _lato = 6.0; //lato è una variabile di stato perchè se modifico il suo valore modifico tutta la vita dell'oggetto
+
+((Es oggetto istanza della classe vettura:
+--velocità (v stato) se tolgo la velocità non sto piu parlando di un veicolo
+--quantità dei liquidi lavavetri (v. attributo) se la tolgo sto sempre parlando di una vettura, quindi non invalido la natura e il lavoro dell oggetto
+
+________________________________________________________________________________
+
+COSTRUTTORE serve per dire lo stato dell'oggetto
+//il costruttore è un metodo particolare che ha lo stesso nome della classe,
+//può avere tutti gli argomenti che servono per portare l'oggetto allo stato iniziale
+
+nel costruttore ci devo mettere solo gli argomenti che servono per costruire l'oggetto
+
+Metodo particolare che ha il medesimo nome della classe, può avere tutti gli argomnti che servono per portare l oggetto allo stato iniziale
+
+La vita dell oggetto segue un meccanismo basato su transizioni di stato, ovvero variazioni del valore delle varibiali
+
+Il costruttore ha l unico scopo di stabilire qual è il valore iniziale delle variabili di stato. Per cui i parametri del costruttore devono essere tutti e soli i valori iniziali delle variabili di stato.
+
+((es. il costruttore cerchio ci fa impostare il valore iniziale del raggio))
+
+_____________________________________________________________________________
+
+ //this:qui, questo _raggio diventa questo raggio. 'riferito a questo _raggio'
+        //il this diventa obbligatore quando c'è il medesimo nome delle variabili
+    }
+
+THIS simboleggia l'istanza corrente vista dall'interno dell'istanza stessa
+
+creare classe Dado, il dado può avere un numero qualsiasi di facce, possiede il metodo lanciare che ritorna il valore della faccia superiore (valore estratto)
+-funzionamento: creo il dado stabilendo il numero di facce, lo lancio n volte e per ciascuna volta stampo il valore estratto
+
+
+_________________________________________________________________________________
+EREDITARIETA'= conseguenza del meccaniscmo di specializzazione
+
+--un fenomeno che in una catena di specializzazione consente a una sottoclasse che specializza, in certe condizioni, eredita dati e metodi della classe piu generica (sovraclasse)
+--I costruttori non vengono ereditati (il meccanismo di costruzione dell'oggetto rimane legato al tipo)
+--I tipi vengono sempre ereditati (se parlo di quadrato, sto parlando anche di un rettangolo)
+
+vale sempre tra sottclasse e classe
+sotto alcune condizioni causa il propagarsi di metodi e dati dal padre al figlio. causa sempre il propagarsi del tipo dall alto verso il basso.
+
+il meccaniscmo dell ereditarietà è scatenato dalla specializzazione
+
+
+Ad es. classe bic, ha associato il tipo biro e il tipo object anche, essendo piu in alto.
+
+public class Biro
+{
+    public void Scrivere(string testo)
+    {
+        Console.WriteLine(testo);
+    }
+    public void Disegnare(string testo)
+    {
+        Console.WriteLine(testo);
+    }
+}
+
+/* a volte una classe così generica non basta, bisogna andare un po' piu nello specifico.
+ * Ho bisogno di un livello di dettaglio superiore. Ad esempio potremmo trovare due sotto livelli:
+ * -- BiroScatto
+ * -- Bic
+ * 
+ * La Biro esprime un concetto generico, mentre la biro a scatto e la bic esprimono un concetto piu specifico.
+ * C'è logicamente una relazione tra Biro e le altre due. L'insieme delle Biro contiene gli altri due insiemi
+ * 
+ * In Object Oriented si dice che BiroScatto "specializza" Biro e anche che Bic "specializza" Biro.
+ * La biro invece "generalizza". (è una specifica più generica) ==> è il sovrainsieme
+ * 
+ * Questo dà luogo alla GERARCHIA fra le classi => questo genera un effetto che si chiama EREDITARIETA' (II proprietà fondamentale del OOP)
+    ciò vuol dire che sotto alcune condizioni, il metodo Scrivere() e il metodo Disegnare() verrano
+    EREDITATI dalle classi BiroScatto e Bic
+ */
+
+
+SPECIALIZZAZIONE:
+
+es. public class Quadrato : Rettagolo {} 
+i : vuol dire specializza
+
+quindi quadrato specializza rettangolo
+
+es.
+ public Quadrato(double lato) : base(lato, lato) //richiamo il costruttore della classe padre
+ {
+     Console.WriteLine($"sto per costruire un quadrato di lato {lato}");
+     _lato = lato;
+ }
+
+tramite : base () invoco il costruttore del rettangolo
+quindi significa che costruisco il quadrato sulla base del rettangolo tramite questa invocazione
+
+quindi vado ad utilizzare i metodi area e perimetro di rettangolo tramite ereditarietà (inheritance)
+
+
+***andando verso il basso SPECIALIZZO (ho una classe piu specifica, fa dei lavori piu specifici)
+
+***andando verso l'alto GENERALIZZO (ho una classe meno specifica)
+
+
+**specializzare significa avere una cosa generica e costruire qualcosa di piu specifico
+
+***********************************************************
+
+ //con l ereditarietà mi porto dietro il tipo anche
+ //posso maneggiare un quadrato come un rettangolo
+
+ Object orqq2 = new Quadrato(10);
+ Rettangolo rqq2 = new Quadrato(10);
+
+ //il tipo rimane quadrato, ma lo sto maneggiando come se fosse un rettangolo
+
+ Console.WriteLine($"tipo={rqq2.GetType()} area={rqq2.Area2()} perimetro=
+{rqq2.Perimetro2()}");//uso i metodi del rettangolo sul quadrato
+
+ Quadrato qq2 = new(10);
+
+ //quando scendiamo verso il basso piu specializzo e piu tipi raccolgo
+quadrato viene trattato come rettangolo ma che rimane un quadrato
+il tipo non si cambia, è sempre di tipo quadrato
+
+
+_______________________________________________________________________
+
+QUANDO POSSO EREDITARE DATI E METODI?
+***EREDITARIETà E MODIFICATORI DI ACCESSO***
+
+una sottoclasse eredita il metodo quando questo metodo viene dichiarato public nella sovraclasse
+
+i membri PRIVATE di sicuro non vengono ereditati (di solito le v. di stato sono sempre private)
+
+--protected (posso accederlo dall interno della classe, dalla classse derivata nello stesso progetto e nella classe derivata in un progetto differente. se una classe nn è derivata nn posso accedervi) apre a tutte le classi derivate ma ha delle limitazioni
+
+--internal (solo se sono nello stesso progetto)
+___________________________________________________________________________
+In .Net Api esiste però un TOP di tutte le gerarchie
+
+Object Class supporta tutta la gerarchia delle classi
+è la radice di tutte le classi che possiamo generare
+
+Object class è la ROOT class. Questo viene esplicitato sempre dal compilatore
+Nulla può superare object.
+
+è come se fosse Biro : Object
+_______________________________________________________________________________
+
+TO STRING: è importante per il debugging
+
+string ToString()
+il metodo serve per rapprensentare in formato String lo stato di un oggetto
+Per ogni tipo che definiamo dovremmo sovrascrivere il metodo ToString() in modo da ritornare valori coerenti con il tipo che stiamo realizzando
+
+il metodo tostring è chiamato in causa tutte le volte che avviene la conversione da un dato di tipo qualsiasi a string
+
+
+To string è definito in Object, lo troviamo in qualsiasi classe
+ha due significati importanti
+-- è un metodo standard per consentire di stampare lo stato di un oggetto in una forma human readble (che possiamo interpretarla noi umani) e quindi è importnte per il debugging (io so che ogni oggetto ha dentro la tostring)
+
+-- il .net software development kit, tutto il sistema dot net hanno adottato tostring come sistema standard di conversione di un qualsiasi tipo di dato in una stringa.
+qst perche il sistema che usa dot net tutte le volte che ho un dato qualsiasi da convertire in stringa io chiamo il dato.tostring
+
+ //viene usato il tostring come sistema standard di conversione di un qualsiasi oggetto in una stringa
+ //viene chiamato implicitamente il metodo tostring()
+ //il ns dato quindi sarà sempre traducibile in una stringa
+
+il metodo tostring non deve essere usato per comunicare valori, per ottenere del lavoro. Ad esempio il ns dado che ci da il numero casuale, non posso usare il metodo tostring
+
+
+___________________________________________
+
+UML linguaggio grafico (Class Diagram) fotografia statica delle composizioni delle classi di un sistema ( non cattura transazioni tra le classi, ma solo come sono messe gu le classi )
+
+piu in basso vado nella specializzazione piu tipi di dato raccolgo
+
+__________________________________________________
+
+//realizzare e testare la classe Lampadina()
+-- pensarla senza troppi paricolari, concentrandosi sul funzionamento della lampadina indipendentem da dove può essere installata
+
+//costruttore di default, è vuoto
+il comoilatore lo inserisce solo se noi non scriviamo nessun costruttore
+
+
+
+______________________________________________________________________________
+
+classe ABSTRACT
+definiamo il metodo solo come un marker. Vengono definiti ma sono definiti astratti, ci sono come etichetta, ma non ci sono inmaniera pratica
+
+se metto un metodo abstract, anche la classe diventa abstract
+
+***una classe astratta rappresenta un tipo realmente esistente (o di comodo) non istanziabile perchè troppo generico, quindi incompleta***
+
+creiamo la classe abstract figurageometrica
+
+il rettangolo : figurageometrica (specializza figurageomatrica)
+
+quando definisco abstract ?
+
+es. VEICOLO = (abstract) Partire(), Fermare();
+VEICOLOAEREO = (abstract) Partire(), Fermare(); (partire e fermare è diverso da veicolo)
+VEICOLOTERRESTRE = (abstract) Prtire(),Fermare();
+Bicicletta = (specializza veicoloterrestre) Partire();
+
+quando si arriva a una classe nn astratta?
+quuando di quella classe si è in grado di dettagliare il comportamento e costruire un istanza. 
+
+_____________________________________________________________________________
+
+CLASSI ASTRATTE E CONCRETE:
+
+se siamo in una catena di ereditarietà alcune classi sono concrete e alcune astratte
+quelle astratte possono essere a ualsiasi livello, possiamo averne quante ne vogliam, servono per definire idee ben precise che esistono ma che non sappiamo definire.
+
+_______________________________________________________________________________
+
+   //POLIMORFISMO
+
+   //possiamo definire un array di tipo figuregeometriche
+   FigureGeometriche[] arrayDiFigureGeometriche = [new Cerchio(12.65), 
+                                                   new Quadrato(22.6),
+                                                   new Rettangolo(12.5,5.4),
+                                                   new Ellisse(5.4,8.5)
+                                                   ];
+
+   for (int i = 0; i < 5; i++)
+   {
+       FigureGeometriche figuraCasuale = arrayDiFigureGeometriche[Random.Shared.Next(arrayDiFigureGeometriche.Length)];
+       Console.WriteLine(figuraCasuale);
+   } 
+
+possiamo dedurre che:
+--cerchio,quadrato,rettang,ellisse ==> li possiamo raggruppare in un array definito tramite un super-tipo
+
+--FigureGeometriche figuraCasuale ==> funziona con una 'maniglia/reference' di super-tipo, fornendo il lavoro di un sott-tipo
+
+---Console.WriteLine(figuraCasuale); ==> ottengo il tostring della figura di riferimento
+
+possiamo lavorare come un super-tipo ottenendo il comportamente del sotto-tipo e rimanendo un sotto-tipo
+il comportamento si definisce polimorfo (III proprietà che devono avere i sistemi per essere definiti object oriented)
+
+***Anche se figuraCasuale è di tipo FigureGeometriche, quando chiami Area() e Perimetro(), viene eseguito il metodo specifico della classe dell'oggetto attuale (ad esempio, Cerchio.Area() se figuraCasuale è un'istanza di Cerchio).***
+
+Sto manipolando ad alto livello ottenendo il comportamento del livello piu specifico.
+
+questo tipo di polimorfismo si dice strutturale, ma ce ne sono altre
+
+--il ciclo somma le aree ed i perimetri delle figure specifiche anche se queste sono manipolate tramite un reference di tipo FigureGeometriche
+
+SPIEGAZIONE ESEMPIO
+Il polimorfismo permette agli oggetti di diversi tipi di essere trattati attraverso una stessa interfaccia comune, consentendo il riutilizzo del codice e la flessibilità
+
+Concetti chiave
+Classe Base e Classi Derivate:
+
+-- FigureGeometriche è la classe base astratta che definisce i metodi comuni Area() e Perimetro().
+
+-- Cerchio, Quadrato, Rettangolo, e Ellisse sono classi derivate che implementano i metodi definiti nella classe base.
+
+Polimorfismo:
+
+Grazie al polimorfismo, puoi creare un array di FigureGeometriche e popolarlo con diverse classi derivate (Cerchio, Quadrato, ecc.).
+Quando chiami i metodi Area() e Perimetro() su un oggetto FigureGeometriche, il metodo corretto per il tipo specifico dell'oggetto viene invocato automaticamente.
+
+Immagina di avere un programma che deve lavorare con diverse forme geometriche: cerchi, quadrati e rettangoli. Ogni forma può calcolare la sua area e il suo perimetro. Senza polimorfismo, dovresti scrivere codice separato per ogni tipo di forma. Con il polimorfismo, puoi trattare tutte le forme come "figure geometriche" e chiamare i metodi Area() e Perimetro() senza preoccuparti del tipo specifico di forma.
+
+
+AD ES.
+ Rettangolo[] arrayRettangoli = [
+     new Rettangolo(5,5),
+     new Quadrato(1),
+     ];
+
+Posso creare un array di super-tipo Rettangolo e inserire dentro sia rettangoli e quadrati 
+_________________________________________________________________________________
+
+//ESERCIZIO
+luigi fa il parquettista, ci chiede aiuto per risolvere il problema dei preventivi che i clienti gli chiedono.
+in genere le voci che compongono il preventivo sono due
+--manodopera per la posa del parquet euro 16.00/mq
+--manodopera per la posa del battiscopa euro 5.00/m
+
+avrebbe bisogno di un software che lo aiuti nei calcoli
+
+Esempio=> per una villa nobiliare deve completare 4 stanze
+-- 10x3 rettang
+-- 7x5 rettang
+-- una tonda di 5m diraggio
+-- una quadrata di 5m (sono 25mq) lui si prende 16 euro al mq, quindi il preventivo è=>400 euro per parquet, per battiscopa=> 5x4(20m) => 100 euro
+
+realizze un sw che sia in grando di stampare i costi per le singole stanze e i costi globali, ha bisogno delle classi gia fatte, figure geometriche
+
+Preventivo 01
+
+--manodopera per la posa del parquet euro 16.00/mq
+--manodopera per la posa del battiscopa euro 5.00/m
+
+Esempio=> per una villa nobiliare deve completare 4 stanze
+-- 10x3 rettang
+-- 7x5 rettang
+-- una tonda di 5m diraggio
+-- una quadrata di 5m
+
+tot area x 16
+tot m linear x 5 al m
+
+
+
+
+
+

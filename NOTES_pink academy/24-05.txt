@@ -1,0 +1,59 @@
+PER FORMATTARE IN VS:
+tieni premuto CTRL e premi K e D
+
+For: index variable scope
+
+int ii; //scope esterno al for, può essere usata anche fuori al ciclo
+for(ii = 0; ii<10; ii++)
+{
+ //elaboro indice
+}
+ii=100;
+
+se la dichiaro all'interno del for, ha uno scope interno, quindi vale per tutte le iterazioni
+
+__________________________________________________________________________
+
+STRUTTURE DATI
+qualcosa che ci consente di trattare piu valori in maniera omogena insieme
+
+Array (o vettori): variabile che contiene N valori
+è una struttura dati indipendente dal tipo di dato. Possiamo creare array con dati di qualsiasi tipo (posso creare un array di oggetti di qualsiasi tipo)
+
+Il limite inferiore dell'array è uguale a 0 e si dice LOWER BOUND
+il limite estremo è uguale a arr.Length - 1 e si dice UPPER BOUND
+
+quando dobbiamo accedere alle varibili contenute nell'array si dicono variabili ad accesso indiretto, tramite indice variabile[indice]
+
+_________________________________________________________________________
+
+Naming Conventions
+
+- non aver mai paura di scrivere nomi (di variabile) lunghi. La variabile deve essere parlante. (es: devo totalizzare il saldo del conto corrente: 
+Sc += valore; //pessimo
+saldoDelConto += valore; //buono
+x += valore; //inaccettabile
+
+- nomi di variabili composti da piu parole
+ (es: devo totalizzare il saldo del conto corrente: 
+Sc += valore; //pessimo
+saldoDelConto += valore; //buono (camelCase)
+x += valore; //inaccettabile
+saldo_conto += valore //ok, ma fuori standard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

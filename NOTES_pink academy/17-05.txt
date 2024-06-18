@@ -1,0 +1,55 @@
+documentazione .NET API browser
+https://learn.microsoft.com/en-us/dotnet/api/?view=net-8.0
+
+API (application programming interface) ovvero libreria di oggetti per il programmatore (pre-pronta che risolve problemi comuni che i programmatori devono utilizzare).
+
+DOTNET pacchetto installato da Visual studio (8.0) cosa comprende?
+- tools di sviluppo (c#, visual basic, f# ...)
+- CLR common language runtime (macchina virtuale che esegue i nostri programmi)
+- tools aggiuntivi (web server ecc)
+- librerie di API (evolve di volta in volta per ogni version)
+
+NAMESPACE raggruppano componenti, pezzi di software. Quello più importante è il SYSTEM
+
+se ho un processo aperto in vs code che nn si chiude, in cmd faccio:
+taskkill /f /pid (id errore) 
+
+____________________________________________________________________-
+
+STRUTTURA API/systema di sviluppo
+
+NAMESPACE = contenitore di tipi (classi). Possono essere raggruppati anche tra di loro come una struttura ad albero
+
+In C# un tipo di dato è (in genere) denominato CLASSE (tipo string si chiama string)
+Una class (di solito) contiene:
+	- Field = variabili
+	- Properties = valori leggibili e/o settabili
+	- Metodi = funzioni che eseguono del lavoro
+
+((STRUTTURA: namespace => classe => field/properties/methods))
+
+TYPE ALIAS (abbreviazione che abbiamo da linguaggio, shortcut)
+
+int num1 = 10;
+long num2 = 10;
+float num3 = 10.4f;
+double num4 = 10.4;
+bool bo = false;
+char carattere = 'a';
+string stringa = "ciao";
+
+TIPO DI DATO CLASS
+
+int.getType() - System.Int32
+long.getType() - System.Int64
+float.getType() - System.Single
+double.getType() - System.Double
+bool.getType() - System.Boolean
+char.getType() - System.Char
+string.getType() - System.String
+
+
+
+
+
+

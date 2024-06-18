@@ -1,0 +1,71 @@
+macchine unix ha una sola root che raggruppa tutta la struttura dell'albero. 
+I separatori sono i /
+
+comando echo %homepath% ti viene restituita la directory
+
+path: percorso, posizione
+assoluto: inizia sempre dalla root
+reativo: inizia dalla posizione correnti, da dove siamo posizionati
+
+dir c:\Users
+
+SE NN TI FA LA PULL CONTROLLA LA ORIGIN
+git remote show origin
+LA CANCELLO
+((git remote remove origin))
+LA AGGIUNGO
+git remote add origin https://github.com/c202403Pink/Reposrc.git
+
+_____________________________________________________________________________
+OPERATORE LOGICO SINGOLO: & e | sono fatti per essere applicati a valori bit a bit
+true & false => false (funziona perche sono un singolo bit)
+in termini logici non esistono differenze, però i doppi operatori sono fatti pr essere usati nelle strutture di controllo
+
+& singolo come differisce da && ?
+&& è un operatore short circuit ( il risultato è lo stesso, è usato solo per operazioni di tipo logico e valuta l'espressione in maniera differente anche se ottiene lo stesso risultato) non valuta la parte sin e la parte dx e poi le combina per arrivare al risultato.
+Vede la parte sinistra, se è false non valuta la parte di dx
+
+&& AND
+se trova una false, non valuta le successive a dx, passa direttamente al risultato false
+T - T - F - ? - ? = F
+
+|| OR
+
+F - T - ? - ? -? = T
+al primo true si passa al risultato finale che è true
+
+esaminano le espressioni da sin a dx e quando hanno elementi sufficienti abbandonano l espressione
+
+le SINGOLE valutano tutta l'espressione e poi arrivano al risultato
+
+quando si lavora bit a bit si possono usare qst operatori di basso livello. Se fossimo programmatori piu vicini alla macchina, piu vicina all'hardware, si viene a che fare con l'utilizzo di operazioni binarie
+
+_____________________________________________________
+
+WHILE
+
+scrivo un blocco di codice che deve essere ripetuto fino a quando la condizione non slitta da true a false
+
+_____________________________________________________
+
+Random è un tipo di dato in grado di generare numeri casuali. La generazione di num casuali è basata su alcune funzioni (quindi è pseudo casuale).
+Contiene un oggetto SHARED che ha i metodi:
+
+Shared.Next() => genera un numero intero
+Shared.Next(end) => genera un numero intero tra 0 e end, escluso end
+Shared.Next(start, end) => genera un numero intero tra start e end, escluso end
+
+
+
+
+SWITCH è una if dove una condiz viene stabilita a priori
+nel corpo vengono valutati i vari casi, valori che la variabile perno può assumere
+
+
+
+
+
+
+
+
+ 

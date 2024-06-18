@@ -1,0 +1,308 @@
+//idee
+-- classe preventivo come addizionatore dei valori da moltiplicare per i costi unitari. Alla classe preventivo vengono passati singolarmente o come array gli oggetti da usare nel calcolo.
+
+--I possibili oggetti da usare nel calcolo sono: 
+	FiguraGeometrica
+	Stanza
+
+*altra idea
+
+--passare i costi unitari al costruttore del preventivo
+--metodi per ottenere i costi separati per battiscopa, parquet, totale
+
+________________________________________________________________
+
+POLIMORFISMO altra caratteristica:
+
+--metodi OVERLOADING => metodi con il medesimo nome, ma firma (signature) diversa.
+
+La signature di un metodo comprende:
+-- nome_metodo + tipo_parametro1 + tipo_parametro2 + ....
+
+(la signature è esattamente intesa secondo questo ordine, se ad esempio ho lo stesso nome di metodo con stessi parametri ma invertiti di posizione, allora la signature è diversa)
+
+Il runtime aggancia (chiama) il metodo opportuno decidendolo in base ai parametri (argomenti) passati durante l'invocazione.
+
+Il metodo overloading può verificarsi all'interno della medesima classe e/o in una gerarchia di classi.
+
+nella signature il tipo di dato ritornato non conta (void o double)
+
+________________________________________________________________
+
+POLIMORFISMO e METHOD OVERRIDING
+-- il polimorfismo strutturale in una gerarchia funziona sulla base del method overriding, ovvero sulla presenza nella gerarchia di metodi con la medesima signature in classi derivate
+
+es. se ho una classe A con metodo faiQualcosa(int x)
+==> public abstract faiQualcosa(int x) OPPURE
+==> public virtual faiQualcosa(int x)
+se metto qui il metodo ==> public faiQualcosa(int x) => questo metodo qui non è overriding
+
+e ho un altra classe B con metodo faiQualcosa(int x)
+==> public override faiQualcosa(int x)
+
+e ho un altra classe C con metodo faiQualcosa(int x)
+==> public override faiQualcosa(int x)
+
+definite in una gerarchia, questi metodi sono in override xke hanno la stss signature, perche si sovrascrivono essendo classi una figlia dell altra.
+
+qst override polimorfo vale se il metodo in cima è marcato come abstract o virtual e i metodi successivi con override
+
+condizione necessaria per cui un metodo sia overriding, che provenga da una classe astratta e sia abstract. 
+condizione necessaria per cui un metodo sia overridable è usare VIRTUAL
+
+((si dice method abstarct se è solo un marker, cioè si definisce e finisce lì))
+((si dice method virtual se ha un funzionamento all'interno))
+
+   //per permettere la sovrascrittura di questo metodo dovrei aggiungere VIRTUAL
+   //potrei avere un metodo virtual in una classe astratta o anche in una classe non astratta
+   //virtual perche può essere sovrascrivere
+
+   //posso combinare override e virtual, si possono intersecare
+   public virtual double Semiperimetro() //metodo overriddable
+   {
+       return Perimetro() / 2;
+   }
+
+
+
+public abstract class X //x avere una classe astratta devo marcarla abstract
+    //nn è necessario avere nessun metodo abstract per avere una classe abstract
+{
+    //se ho un metodo abstract allora sarà overridable
+    public void esegui()
+    {
+        Console.WriteLine("sono una classe astratta");
+    }
+}
+
+
+______________________________________________________________
+
+NULL 
+
+//creare classe lampadario in grado di gestire un numero arbitrario di istanze Lampadina
+
+il lampadario deve ess in grado di gestire tutte le istanze di lampadina contemporaneam
+
+__________________________________________________
+
+SRP single responsability principle ==> una classe, un metodo, una variabile, ... (è applicabile a qualsiasi componente object oriented), deve avere un unico obiettivo, ovvero un'unica responsabilità.
+
+qst principio aumenta la flessibilità di quello che stiamo facendo
+
+__________________________________________________
+
+metodi di servizio = metodi di supporto ai metodi principali (qst di solito sono private rispetto ai metodi principali che sono public)
+
+_____________________________________________
+
+///es
+costruire un generatore di psw
+partendo dalle stringhe lettere minuscole, lettere maiuscole, numeri e "@#?=+"
+scrivere una classe in grado di istanziare un generatore di psw di lunghezza desiderata
+
+ti do una lunhezza e mi dai una psw composta da lettere min, maiusc, numeri e caratteri speciali
+
+________________________________________________
+oggetti IMMUTABLE
+
+
+Il valore della variabile immutable non cambia nel tempo
+se voglio rafforzare qst concetto, metto come modificatore della variabile il readonly
+
+il read only è un rafforzativo di quello che viene stabilito, quella roba non può cambiare nel tempo
+
+tutte le vriabili che non variano nel tempo andrebbero sempre marcate readonly
+
+_________________________________________________
+
+STATIC anche le classi possono avere delle varibili che sono riferite alla classe stessa e non agli oggetti che vengono istanziati
+
+un membro static afferisce alla classe e dovrebbe essere sempre manipolato tramite il nome della classe
+
+una variabile static è un "semaforo" tra tutte le varie istanze della medesima classe
+
+se io ho qualcosa di static, ad es un metodo static, ed ho delle varibili di istanza, da queste variabili di istanza posso vedere un qualcosa di static
+ma nn vale il viceversa
+
+se sono static non posso vedere istanze statiche
+dall oggetto posso risalire alla classe
+
+da uno static non posso andare a pescare fuori un istanza specifica
+
+da un meotdo voi ad es posso chiamare un metodo statico (sono un istanza non static e posso chiamare tutto a livello della mia istnza)
+
+da un metodo static ad es non posso andare a chiamare un metodo non statico
+
+static ==> va chiamato con nome della classe e ne esiste una copia sola per tutti gli oggwtti generati da quella classe
+
+un metodo static non riconosce un metodo non static xke non è definito a livello di classe
+
+//static è legato al tipo (classe/struct)
+//lìistanza vede lo static
+//lo static non vede l'istanza
+_____________________________________________
+
+PASS BY AGLI OGGETTI
+
+
+3 tipi di funzionamento
+
+pass by value
+qnd passo variabili di tipo semplice (num, caratteri ecc)
+se io passo la variabile a un metodo qst riceve la copia del valore e quasliasi modifica nn viene propagata all inditeo
+
+se sto lavorando sull oggetto il metodo riceve la copia del riferimento all oggetto ed è in grado di lavorare sull oggetto
+
+      //PASS OBJECT BY REFERENCE
+      Contenitore contenitore = new(500);
+      l1.somma(contenitore);//viene passato il reference a contenitore
+      Console.WriteLine($"contenitore.x= {contenitore.x}");//501
+      //si incrementa perche quando passo un oggetto sono in un pass by value
+      //però nel value del riferimento è contenuto il riferimento stesso, quindi
+      //passo il riferiemtno alla mia variabile
+      //il metodo riceve una copia del reference all'oggetto
+      //il lavoro del metodo avviene tramite il reference sull oggetto e
+      //la modifica viene propagata all indietro
+      /*
+       l'oggetto contenitore ha un indirizzo di memoria sullo STACK e il suo valore (i dati) è posizionato sullo HEAP
+      il valore 500 che sta nella x si trova nello heap
+      l argomento che viene ricevuto dal metodo è la copia del valore contenuto nella variabile
+      siccome l oggetto è tipo reference
+      nella variabile è contenuto il reference
+      che puntano entrambi nella heap dove ci sono i dati dell oggetto
+      il metodo rievente riceve il reference al valore contenuto nell oggtto
+      tramite il reference puo fare la modifica ai dati dell oggetto stesso
+      Contnitore c che passiamo come parametro a somma è esattamente una maniglia
+
+      il return è fatto apposta per ritornare il valore
+      in somma(int x) se voglio che il valore che passo come parametro il metodo influenza il valore della variabile (x++)
+      l'unica maniera che ho è prendere il risultato e ritornarlo fuori col return (sommaReturn)
+      per modificare l valore della variabile 
+
+      valore = l1.sommaReturn(valore); //valore viene influenzato grazie al return
+
+      quando il metodo deve elaborare e modificare una var semplice per farla uscire devo usare il return
+
+      per gli oggetti avviene un comportamento differenze
+      l'ggoetto sullo stack ha il riferimento e non il valore stesso
+      viene estratto il riferiemnto che puntano al medesimo oggetto
+      tramite il riferimento la modifica viene riportata all indietro
+
+___________________________________________________________________
+
+STRINGBUILDER
+
+quando creo un quadrato con lato 10 è immutable, 
+oggetti che hanno un prp stato che nn varia sono immutable
+
+la stringa è un oggetto immutable che cambia il proprio valore tutte le volte che la modifico
+
+
+IMMUTABLE
+GARBAGE COLLECTION
+
+ogni volta che faccio una new viene creato un oggetto e viene immesso all interno del CLR.
+dal punto di vista del programma abbiamo un HANLDE/MANIGLIA una variabile che ha dentro il riferimento di qst oggetto creato
+ogni oggetto di quasliasi tipo è collegato a un handles
+
+quando creiamo oggetti questi occupano la memoria del CLR
+la new gli dice 'alloca una certa quantità di memoria per questo oggetto', il risultato è un reference sullo stack e un reference memorizzato in ciascun handle
+
+succede poi che l handle per qualche motivo di perde (handle=null) (out of scope) e a qst punto l oggetto perde l'handle ed è libero in memoria
+
+il clr si accorge di questo e prende questo oggetto e lo butta via tramite un organizzazioe che si chiama garbage collection (collez dei rifiuti)
+quindi la memoria del nostra clr è sempre abbasanza ottimizata da wuesto meccanisco scatenato periodicamente
+
+se io creo tante istanze della mia stringa e tengo l'ultima, tutte le preedenti dovrebbero essere 'liberate' in memoria e quindi qst carbage collection butterà via tutti quegli oggetti inutili, a qst viene usato lo string builder
+
+è importante che il garbage collection venga gestito al meglio con accorgimenti tipo lo string builder
+ogni volta che viene attivato il carbage collection viene attivato il processo inverso del costruttore, ovvero il DISTRUTTORE
+
+
+***
+
+Stringè immutabile
+
+cioè, le stringhe non possono essere modificate. Quando modifichi una stringa (ad esempio aggiungendovi qualcosa), stai effettivamente creando una nuova stringa.
+
+Ma StringBuilderè mutevole.
+
+quindi, se devi modificare una stringa più volte, ad esempio più concatenazioni, usa StringBuilder.
+
+Tutti stringgli oggetti sono immutabili in C#. Gli oggetti della classe string, una volta creati, non potranno mai rappresentare un valore diverso da quello con cui sono stati costruiti. Tutte le operazioni che sembrano "cambiare" una stringa invece ne producono una nuova. Questo è inefficiente con la memoria, ma estremamente utile per quanto riguarda la possibilità di avere fiducia che una stringa non cambierà forma sotto di te, perché finché non cambi il tuo riferimento, la stringa a cui fa riferimento non cambierà mai.
+*****
+
+Per "effettuare una modifica" su una stringa rappresentata come C# String, crei effettivamente un nuovo Stringoggetto. L'originale Stringnon viene modificato... perché è immutabile.
+
+Nella maggior parte dei casi è meglio usarli Stringperché è più semplice ragionare su di essi; ad esempio, non è necessario considerare la possibilità che qualche altro thread possa "cambiare la mia stringa".
+
+Tuttavia, quando è necessario costruire o modificare una stringa utilizzando una sequenza di operazioni, potrebbe essere più efficiente utilizzare un file StringBuilder. Un esempio è quando si concatenano molti frammenti di stringa per formare una stringa di grandi dimensioni:
+
+Se lo fai come una sequenza di Stringconcatenazioni, copi O(N^2)i caratteri, dove Nè il numero di stringhe componenti.
+Se usi a StringBuildercopi solo O(N)i caratteri.
+__________________________________________________________________
+
+SCOPE DELLE VARIABILI
+
+- le variabili di istanza sono attive fino a quando è attiva l istanza dell oggetto (sono sempre presenti fino a quando il clr non butta via l'oggetto)
+
+se ho due metodi in una classe, è necessario che una variabile sia di istanza perche due metodi ne condividano il valore
+
+se definisco una variabile static, tutte le istanze di quella classe sono al corrente di quel valore
+
+Per condividere il valore di una variabile tra piu istanze (semaforo) la variabile deve essere marcata static (a livello di tipo)
+
+le variabili static sono raggiungibili anche in altre classi
+
+*****tutto quello che è static non viene ereditato****
+qst perche è legato alla classe e la classe non eredita 
+
+
+-per le variabili definite nei metodi/cicli, ovvero le variabili locali
+
+tutte le variabili sono block scope
+il campo di visibilità di una variabile è il blocco in cui è definita unitamente a tutti i blocchi interni
+
+
+
+_____________________________________________________
+
+//crerae una classe che simuli il gioco della tombola
+
+- estrarre numeri dall'1 al 90 compreso
+- estrazione deve essere casuale 
+- non può essere estratto 2 volte lo stesso numero in una sessione di gioco
+- il gioco termina con estrazione di tutti i 90 numeri
+
+- main ==> chiama 90 volte la tombola per ottenere il numero e la 
+- tombola che deve generare il numero casuale e fornirlo in uscita tutte le volte che viene chiamato il metodo:
+
+public int estrai()
+
+tombola che si deve preocc di generare in maniera univoca i numeri
+di darli uno per volta quando fa l estrai
+
+main che chiama 90 volte il metodo estrai su tombola e deve ottenere come risposta 90 numeri compresi tra uno e 90 diversi dall altro
+
+
+main
+for x 90
+estrai()
+
+estrai(){
+	
+}
+
+nelle proprietry se ritorno reference con oggetti che nn sono immutablt si puo rompere l incapsulamento
+
+
+
+
+
+
+
+
+
+
+

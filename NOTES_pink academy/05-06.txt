@@ -1,0 +1,213 @@
+((operatore ternario==> anche detto immediate if (IIF))
+
+INCAPSULAMENTO degli oggetti che producono lavoro==
+
+--variabili di stato sempre private.
+--variabili di stato mai con un setter!
+
+A volte si puo concedere la lettura su una variabile di stato
+se la variabile è di tipo semplice non vi dovrebbero essere particolare problemi
+
+se la variabile è di tipo riferimento(complesso) le cose cambiano:
+--se la variabile di stato è di tipo riferimento ed è mutable mai concedere dei getter.
+
+--se la variabile di stato è di tipo riferimento ed è IMmutable non dovrebbero esserci problemi.
+
+Se devo variare lo stato di un oggetto dall esterno devo farlo tramite un metodo che verifichi e garantisca la coerenza dello stato di tutto il sistema
+
+***Le proprietà è una variabile mascherata da metodo in c#*** è un dato all interno di un sistema a oggetto
+__________________________________
+
+OGGETTI BUFFER ((ENTITY))
+
+li trovo inevitabilm legati ai sistema dati
+c'è tutta un altra categora di oggetti che TRASPORTANO DATI (che non producono lavoro) 
+sono delle scatole in cui noi mettiamo i dati, non sono la macchina che produce il lavoro
+
+(ad es. persona) 
+((es. una busa che trasporta una lettera))
+
+--sono variabili SEMPRE private
+--sono variabili sempre con getter!
+--sono variabili con setter se è consentita la modifica del dato trasportato
+
+qst oggetti sono STATELESS (non hanno stato)
+
+________________________________________________
+
+CONTENITORE DI OGGETTI
+
+--qualsiasi oggetto che ha dentro almeno un altro oggetto e il suo compito è prendere l oggetto 
+
+--nel mondo oggetti, usare oggetti di tipo contenitore è moolto diffuso.
+
+un contenitore object generico è posso flessibile
+
+possiamo dunque definire un PARAMETR TYPE 
+<T> ==> per utilizzarlo all interno della classe
+
+noi specifichiamo un tipo durante la creazione del contenitore e il compilatore adotta in automatico il tipo 
+
+vantaggi:
+--evita la scrittura dei cast espliciti
+--segnala a livello di compilazione eventuali errori di conversione tra tipi non compatibili
+
+--quando si deve definire un contenitore
+vale la pensa definirlo generico con il tipo <T> 
+
+Un contenitore è IMMUTABLE quando nn può cambiare il suo contenuto
+
+//////////ES
+abbamo una serie di metodi particolarm complessi (che accettano string,string,int) e che nn riescono a ritornare un solo risultato, ma ritornano una tripletta (nn hanno un risultato solo) che possono essere di tipo
+int, string, string
+oppure
+string, int, string
+oppure
+int, int, string
+
+come risolvo? 
+ho un metodo che fa del lavoro complesso che nn so
+ho un metodo solo per lavorare e mi da questi possibili risultati
+
+devo cercare di ritornare un valore solo, quindi come risolvo?
+ 
+devo ritornare un solo tipo
+ritorna un contenitore che abbiamo qst 3 tipi di oggetti
+
+_________________________________________________
+
+STRUTTURE DATI
+
+ARRAY--
+gli array realizzano una struttura dati efficiente. Ma con qualche problema:
+--il principale problema è la rigidità: una volta allocato l'array non è automaticamente espandibile nè comprimibile
+
+STRUTTURE DATI NON RIGIDE ((collection))
+- ArrayList (di utiltà abbast limitata)
+- List<TYPE>  
+- Dictionary
+
+ARRAYLIST ==> array che può contenere solo object (bisogna continuare ad effettuare dei cast), è un array a cui possiamo aggiungere dinamicamente elementi di tipo oggetto.
+
+LIST ==> personalizzabile a un tipo. Realizza un contenitore a lunghezza variabile di tipo generico
+
+
+            List<string> listaStringhe = new();
+
+           /* listaStringhe.Add("stringa 1");
+            listaStringhe.Add("stringa 2");
+            listaStringhe.Add("stringa 3");
+            listaStringhe.Add("stringa 4");*/
+
+            for (int i = 0; i < 100000; i++)
+            {
+                listaStringhe.Add($"stringa {i}"); //è espandibile
+            }
+            Console.WriteLine($"la lista contiene {listaStringhe.Count} elemento"); 
+
+       //COUT corrispettivo della LENGTH. 
+       //la differenza tra i due è che il count cambia durante il ridimensionamneto della lista
+
+
+la LENGTH è sempre la stessa. se creiamo un array di lunghezza 100 e  loriempiamo con 5 soli elementi,la length sarà sempre 100
+
+il COUNT invece varia, ci dà esattamente il conteggio degli elementi contenuti in list
+
+---da un certo punto di vista la lista si comporta come un array
+-- mi dice in tempo reale gli elementi della lista
+-- nn mi obbliga ad avere un dimensionamento
+-- posso accedere all elemento sempre tramite l'indice (lista1[0])
+
+--possiamo anche convertirla in un array tramite il metodo ToArray()
+
+-- le liste sono piu usate, piu flessibili, si prestono a gestire insieme di ampiezza variabile
+
+--PROBLEMA LIST : la posizione di un elemento può variare, se eliminiamo un elemento dalla lista allora cambiano tutti gli indici degli elementi
+
+
+DICTIONARY<K,O> (come vocabolario => parola,spiegazione)
+
+tabella doppia entrata, dove il prima elemento rappresenta la chiave e il secondo l'oggetto
+
+è una lista a doppia entrata,formata da coppie il cui primo elemento è una chiave
+
+
+________________________________________________________-
+//PASQUETTISTA ESERCIZIO
+introdurre uso delle list
+
+
+funzionalità: 
+--calcolo costo parquet
+--calcolo costo battiscopa
+--calcolo costo tot
+
+l'actor chiama questi 3 metodi
+
+per alimentare bse calcolo
+--aggiungi di un array di figure
+--aggungi di una singola figura (add)
+
+preventivo deve ess in grado di mettere dentro le specifiche come le vuole lui e fare i calcoli
+
+
+BREAK PONT punti dove il debug si ferma
+
+
+INTERFACE___________________________________________
+
+posso definire una interface <<interface>> che definisce i medesimi comportamenti di area e perimetro di fig geometrica
+
+fig geometrica e laghetto hanno in comune un tipo che definisce due comportamenti in comune
+
+è una specie di classe leggera che definisce dei comportamenti
+
+interface è implicitamente astratta, costituisce un tipo ma nn è istanziabile
+
+l'INTERFACE ==> definisce un tipo (come la classe), è astratta, quindi non istanziabile. Dei metodi si definisce solo la signature ed il tipo ritornato
+((nel lingaggio umano assomiglia a un contratto, con delle condizioni))
+
+((tipi di dati definiti con le class sono i reference, quelli definiti struct sono i semplici, e un altro tipo di dato è definito da interface))
+
+interfaccia dice se vuoi essere del mio tipo devi avere i miei metodi
+
+((la nostra interfaccia possiamo chiamarla MISURABILE, se vuoi essere di tipo misurabile, devi fornirmi area e perimetro (capace di essere misurato. Questo è un concetto molto generico che possiamo applicare a una lampadina ad esempio, anche se hannno nature completamente diverse.))
+
+un interfaccia definisce un tipo e definisce un contratto
+
+qualsiasi calss, record o struct che implementano tale contratto deve fornire un implementazione dei membri definiti nell interfaccia (se vuoi far parte del tipo 
+
+definisce il contratto a cui devo aderire per acquisire il tipo misurabile
+
+INTERFACCE E CLASSI ASTRATTE?
+
+interfacce==> contratti in cui chi le deriva assicura di implementare tutto quello che c'è dentro. Contengono solo la definizione dei metodi e non la loro implementazione.
+
+non sono istanziabili e non contengono implementazioni di metodi e campi
+
+non hanno costruttore
+
+le classi possono implementare piu di un'interfaccia
+e si usa per definire un comportamento comune tra classe diverse
+
+La class astratta puo contenere invece sia metodi astratti che con implementazione. può quindi avere implementazione di metodi e proprietà
+puoi derivare solo da una singola classe astratta, che può avere campi e costruttori
+se ha metodi abstract devi per forza implementarli nelle classi figlie, altrimenti puoi non farlo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

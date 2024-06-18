@@ -1,0 +1,118 @@
+DATACENTER
+
+computer vengono raggruppanti in datacenter, capannoni dove le macchine vengono infilate una dentro l'altra. Ognuna di queste macchine non ha neanche un video.Per operare su qst macchine non ho un interfaccia grafica, quindi interagisco con la linea di comando che è più veloce e immediato.
+
+____________________________________________________________
+regole di utilizzo git
+
+- repo personale effettuare tutte le commit che servono ed almeno una push ogni sera alla fine della giornata
+
+- tutte le sere/mattine sincronizzare i repo condivisi
+- repodoc aggiornarlo almeno una volta al giorno
+- reposrc verrà aggiornato più frequentemente
+______________________________________________________________
+
+SVILUPPO SOFTWARE
+
+sviluppare software vuol dire varie cose, tra cui:
+- scrivere codice sorgente (source), file testuali pronti per essere compilati oppure eseguiti.
+Per farlo necessitiamo di un editor di codice con funzionalità di controllo, esecuzione, debugging (bug = errore, eliminazione errori dal software) => IDE (integrated development environment)
+
+Visual studio (microsoft) fortemente integrato con l'ambiente microsoft. Lo useremo per .Net (8) e C#
+
+project: unità di progetto, prodotto
+soluzione: prodotto che comprende più progetti
+
+comando DOTNET HELP, dotnet --version (dalla 5 in su stiamo producendo applicazioni multipiattaforma)
+
+CLR: Common language runtime (macchina virtuale). Compila
+.NET: ambiente di sviluppo. Funziona con diversi linguaggi, f#, visual basic, c#. Consente la migrabilità di software su 3 piattaforme: windows, linux e mac.
+
+quando creiamo un progetto vs, avremo nella cartella:
+qst primi due file sono legati al framework dot net
+
+- un file .sln (specifiche della solution)
+
+- un file .csproj (definizione di progetto) versione di .net e altre info
+
+- file di programma .cs (c#): è il file sorgente c# che verrà passato al compilatore c# di .net che tirerà fuori un eseguibile intermedio in un linguaggio P-Code (codice intermedio valido per le varie piattaforme supportate)
+
+CARTELLE OBJ E BIN
+la cartella obj contiene info di file eseguibili
+la cartella bin 
+in genere gli obj e le bin non vengono mai salvati su github, devono essere sempre ignorati, quindi li andiamo a mettere nel file .gitignore
+
+PRIMA DI ADDARE E COMMITTARE LE MODIFICHE su git assicurarsi di avere il file .gitignore opportuno
+
+su intenret si trovare dei git ignore gia precompilati, esempio:(https://gist.github.com/vmandic/ac2ecc9c24f6899ee0ec46e4ce444a0e)
+
+CREAZIONE GITIGNORE TRAMITE DOTNET
+oppure usiamo in comando (dotnet new gitignore)
+PER APRIRLO
+notepad .gitignore
+
+((se in una cartella lancio il comando da cmd => dotnet new console. Mi genererà le stesse cartelle ecc che mi genera Visual studio))
+
+__________________________________________________________
+
+C# linguaggio capibile e utile per programmare in .net
+
+il nostro file soure c# => compilato dal compilatore c# di .net => in eseguibile in linguaggio P-Code => esecuzione del software => compilazione in base alla platform (se siamo in windowx sarà .exe) tramite il CLR => (ultima fase) run del .exe => result
+
+Tutto questo processo lo esegue Visual Studio o .net
+
+(in VS freccia vuota verde fa una run con debug, con la freccia vuota si lancia il software denza debuggarlo)
+
+dotnet run (cmd) lancia il programma senza debugg 
+
+Un programma è composto da molti statement organizzati secondo un flusso logico, e ogni statement termina con il ;
+________________________________________________________________
+
+PERIFERICHE DI I/O per comunicare con la macchina (console)
+sysin (system input) si fa tramite la funzione ReadLine()
+Console.ReadLine()
+Console.ReadKey()
+
+sysout (system out) corrispondenza in c# => WriteLine
+Console.WriteLine()
+Console.Write() (non va accapo)
+
+syserr (system error) corrispondenza in c# =>  Error.WriteLine
+Console.Error.WriteLine()
+________________________________________________________________
+
+CARATTERI DI CONTROLLO (dell'output)
+'\t' tabulazione in genere 4 o 8 spazi (si può modificare)
+'\n' new line, vai accapo
+'\r' torna a capo
+'\\' carattere '\'
+
+_________________________________________________________________
+
+*priorità di valutazione delle espressioni*: un espressione viene sempre prima valutata e poi passata come argomento
+
+Console.WriteLine("Hello" + " " + "World");
+
+prima viene valutata tutta l'espressione nelle parentesi tonde e poi viene utilizzata come argomento per il metodo
+
+NELLE STRINGHE
+
+- $" ci consente di inserire nelle {} delle espressioni valutabili
+- @" ci consente di scrivere delle stringe as is, che vengono stampate così come sono state scritte. (pre-formattata multiline) che conserva la formattazione
+- @$" è la combinazione delle due
+
+____________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+

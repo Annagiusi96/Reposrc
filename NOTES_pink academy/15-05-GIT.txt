@@ -1,0 +1,120 @@
+Segreteria Organizzativa|Digital Thinks S.r.l.P.zza I. Montanelli, 20 – 20099 Sesto San Giovanni MI
+    Tel. +39.02.8721132 | www.dthinks.it
+
+
+MAIL
+
+C202405Pink@proton.me
+
+user=C202405Pink
+
+password=P202405Pink
+
+GITHUB
+
+user=C202403Pink
+
+psw=P202405Pink
+
+UPLOAD
+
+https://icedrive.net/r/fFvpHCRFdhfT8Rv4fVfcG3x2Bhf7CZx93ctDDtBf
+
+_______________________________________-
+
+FILESYSTEM
+
+LIVELLO FISICO:
+a livello di sistema opertivo quel pezzo di software che organizza in una maniera strutturata i dischi. Consentono di strutturare un disco in una maniera logica, fluibile. Quando formattiamo un disco viene realizzato un filesystem sopra questo disco.
+FS fisico viene creato durante la formattazione del disco
+
+La formattazione organizza i nostri dati secondo diverse tipologie:
+- Directory: Ogni disco (C:\ => è la root/radice del filesystem) sarà suddiviso in varie directory/folder/carpette. Le directory possono costruire un albero e pssono contenere altre directory, oppure può contenere file o archivi. I file possono contenere solo dati (informazioni).
+File possono essere:
+1- file che contengono info testuali che si possono leggere direttamente. I file di programma sono di tipo testuale. 
+2- Oppure possono esserci file binari che non possono essere letti, come un filmato che ha bisogno di un lettore video
+
+la formattazione ci creerà directory di default come ad esempio:
+le tre cartelle principali di windows:
+- windows (programmi di sistema operativo)
+- Users (tutti gli utenti della macchina). ogni utente avrà una sua directory che si chiama Home Directory
+- programmi (tutti i programmi che noi installiamo aggiuntivi)
+
+LIVELLO LOGICO:
+Il FS insieme di directory che ci consentono di memorizzare le nostre informazioni.
+Con la programmaz si interagiscono con directory e file.
+
+Nella home directory andiamo a salvare i nostri programmi nello spazio di lavoro principale: C202405Pink
+
+GIT
+sistema PEER-TO-PEER (da pari a pari. Avere un network di nodi tutti della stessa importanza e tutti elegibili come nodo principale). 
+Le repository (i nodi di git) sono tutti uguali. 
+Per ora github è il nostro master per comodità, quindi il nodo master.
+L'elezione di un nodo principale è frutto di scelta. 
+Scegliamo github come nodo principale perchè ha diverse funzionalità. Ci permette di controllare il lavoro degli altri, accettarlo o rifiutarlo, ci permette di fare pull request ecc.
+
+URL univoque risorse located (indirizzo univoco)
+
+COMANDI GIT:
+
+dir : elencami il contenuto dell directory. (display directory content)
+
+. : rafforzativo della directory corrente (affianco a dir, cd)
+
+.. : directory che contiene la directory corrente (vado indietro a un passo sopra nell'albero)
+
+\ : (backslhash) directory root (ad esempio c:\)
+
+dir /a : tutti i file anche i nascosti
+
+dir (nome cartella): tutti i file di quella cartella
+
+git add . : parti dalla cartella in cui ti trovi e per tutte le sotto cartelle avrai i file che devono essere aggiunti a git (aggiungiamo file nell'area di parcheggio/staging)
+
+git rm --cached (nome da eliminare): possiamo eliminare file prima di committare. elimina il file selezionato dalla staging area
+
+git remote show origin : mi esce la url della repository remoto (c'è una sincronizzazione bidirezionale)
+
+- file .gitignore : se è necessario escludere file. se metto ad esempio .lock.* escluderà tutti qst file. il # è il commento
+
+- remote (comando git che lavora con i repository remoti, ovvero diverso da quello da cui sto lavorando) permette di collegare un repo locale con un repo remote
+
+- origin è il nostro repo remoto di riferimento
+
+- commit : conferma il lavoro verso il repo locale, creando un commit ID. Ogni commit ha un proprio commit id univoco
+
+- git push -u origin main : invia al repo remoto i commit che sono nel repo locale. Spingi le cose in origin (url remoto) e catalogalo sulla branch main. Con la push 'popolo' la repo remoto con le modifiche che ho fatto su quella locale
+
+- git log : mi da storico dei commit
+
+- type README.md : ti legge ciò che sta scritto nel file
+
+- git pull origin main : pull per la prima volta
+
+- fetch: copia da repo remoto a repo locale
+
+- pull: copia da repo remoto a repo locale e a working tree direttamente. Quindi effettua da repo locale al woring tree un MERGE in automatico. Se ci sono modifiche in working tree allora vuole un commit per sincronizzare le modifiche. Oppure si può fare uno STASH che mette le modifiche in un area temporanea che poi si decide se committarle o buttarle. Se si rompe tutto tutto si butta la directory e si rifà un clone daccapo.
+
+- del (nomecartella): ti svuota la cartella
+
+- rmdir (nome cartella): ti dice se la directory è vuota oppure no
+
+- rmdir /s (nomecartella): ti elimina la cartella
+
+La prima volta che viene fatta la sincronizzaz tra repo remoto e quella locale si usa git clone (url). Il clone va sempre fatto in una cartella che non sia una git repo.
+Le volte successive faremo solo aggiornamenti in locale usando git pull origin main
+
+PULL REQUEST il responsabile della repo prende tutte le modifiche del dev, faccio una pull e la butto nel main.
+
+((in cmd se scrivi TREE ti fa la rappresentazione di un albero e delle varia radici delle cartelle. tree /? ti dà i comandi che si possono fare))
+
+
+
+
+
+
+
+
+
+
+

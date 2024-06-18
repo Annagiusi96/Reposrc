@@ -1,0 +1,6 @@
+	SELECT TOP (1000) [codice]
+      ,[descrizione]
+      ,[prezzo]
+      ,[classificazione]
+      ,[class3]
+  FROM [pinkacademy].[dbo].[prova]
